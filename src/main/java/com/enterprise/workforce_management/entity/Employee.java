@@ -10,7 +10,7 @@ import lombok.Setter;
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "employees_db")
+@Table(name = "employees")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -23,6 +23,7 @@ public class Employee {
     private String employeeCode;
     private String firstName;
     private String lastName;
+    @Column( unique = true )
     private String email;
     private String phoneNumber;
     private String designation;

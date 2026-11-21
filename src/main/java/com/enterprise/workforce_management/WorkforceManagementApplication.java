@@ -8,8 +8,6 @@ public class WorkforceManagementApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(WorkforceManagementApplication.class, args);
-
-		System.out.println("Hello, World! Welcome to the Workforce Management Application.");
 	}
 
 }
