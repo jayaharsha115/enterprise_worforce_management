@@ -1,0 +1,15 @@
+package com.enterprise.workforce_management;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class WorkforceManagementApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(WorkforceManagementApplication.class, args);
+
+		System.out.println("Hello, World! Welcome to the Workforce Management Application.");
+	}
+
+}
