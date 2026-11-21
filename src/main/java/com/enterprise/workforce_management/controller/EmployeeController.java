@@ -3,6 +3,7 @@ package com.enterprise.workforce_management.controller;
 import com.enterprise.workforce_management.entity.Employee;
 import com.enterprise.workforce_management.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,8 +22,12 @@ public class EmployeeController {
     }
 
     @PostMapping
-    public Employee saveEmployee(@RequestBody Employee employee){
-        return employeeService.saveEmployee(employee);
+    public ResponseEntity<Employee> saveEmployee(@RequestBody Employee employee) {
+        if (employee.getId() != null) {
+            return ResponseEntity.badRequest().build();
+        }
+        Employee savedEmployee = employeeService.saveEmployee(employee);
+        return ResponseEntity.status(HttpStatus.CREATED).body(savedEmployee);
     }
 
     @GetMapping
@@ -32,7 +37,7 @@ public class EmployeeController {
     }
 
     @GetMapping("/{id}")
-    public Optional<Employee> findEmployeeById(@PathVariable Long id){
-        return employeeService.findEmployeeById(id);
+    public ResponseEntity<Employee> findEmployeeById(@PathVariable Long id) {
+        return ResponseEntity.of(employeeService.findEmployeeById(id));
     }
 }
